@@ -2,22 +2,13 @@ language: node_js
 sudo: required
 services:
   - docker
-env:
-  DOCKER_COMPOSE_VERSION: 1.8.0
 node_js:
   - "6"
   - "6.1"
   - "5.11"
   - "7"
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
 script:
-  - docker-compose rm -f
-  - docker-compose -f docker-compose.test.yml up --timeout 1 --build -d -p ci
-  - docker-compose stop
+  - docker-compose -f docker-compose.test.yml -p ci up --build --abort-on-container-exit
 after_script:
   - docker-compose kill
 after_success: 'npm run coveralls'
