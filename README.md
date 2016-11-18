@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/Oupsla/BtrShop-cloud.svg?branch=master)](https://travis-ci.org/Oupsla/BtrShop-cloud)
+# BtrShop-cloud [![Build Status](https://travis-ci.org/Oupsla/BtrShop-cloud.svg?branch=master)](https://travis-ci.org/Oupsla/BtrShop-cloud) [![Coverage Status](https://coveralls.io/repos/github/Oupsla/BtrShop-cloud/badge.svg)](https://coveralls.io/github/Oupsla/BtrShop-cloud)
 
-# BtrShop-cloud
 
 API for the project `Recommendation in situ de produits en magasins` submitted by Université Lille 1 in collaboration with the Inria and the team Spirals.
 
@@ -10,7 +9,7 @@ API for the project `Recommendation in situ de produits en magasins` submitted b
 - Charlie Quetstroey
 
 
-## Install 
+## Install
 
 You only need [Docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/)
 
@@ -52,10 +51,9 @@ The folder `Model` contains the various business objects. This is what defines t
 
 Tests are written thanks to the framework Mocha and are executable with the command `npm test` after launching the server with Docker.
 
-It is possible that you have to launch the following command to install test dependencies : 
+It is possible that you have to launch the following command to install test dependencies :
 - `npm install -g standard`
 - `npm install -g mocha`
 - `docker-compose build`
 - `docker-compose up -d`
 - `npm test`
-

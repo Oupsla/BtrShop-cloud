@@ -54,12 +54,12 @@ class ProductController extends Controller {
     const resCheck = checkParam(req, req.query);
 
     if (resCheck.code !== 200) {
-      res.send(resCheck.message, resCheck.code);
+      res.status(resCheck.code).send(resCheck.message);
     } else {
       return this.model.find(req.query)
       .then((collection) => {
         if (collection === null || collection.length === 0) {
-          res.send('No product found with this ean', 404);
+          res.status(404).send('No product found with this ean');
           return;
         }
         return res.status(200).json(collection);
@@ -72,12 +72,12 @@ class ProductController extends Controller {
     const resCheck = checkParam(req, req.params, true);
 
     if (resCheck.code !== 200) {
-      res.send(resCheck.message, resCheck.code);
+      res.status(resCheck.code).send(resCheck.message);
     } else {
       return this.model.findOne({ ean : req.params.ean })
       .then((collection) => {
         if (collection === null || collection.length === 0) {
-          res.send('No product found with this ean', 404);
+          res.status(404).send('No product found with this ean');
           return;
         }
         return res.status(200).json(collection);
@@ -98,7 +98,7 @@ class ProductController extends Controller {
       })
       .catch(err => next(err));
     } else {
-      return res.send(resCheck.message, resCheck.code);
+      return res.status(resCheck.code).send(resCheck.message);
     }
   } // END : removeByEan
 
