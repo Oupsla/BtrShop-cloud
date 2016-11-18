@@ -1,0 +1,15 @@
+sut:
+  build: .
+  ports:
+    - "3000:3000"
+  entrypoint: npm test
+  links:
+    - mongo
+  environment:
+    - MONGO_DB_URI=mongodb://mongo:27017/btrshop-cloud
+    - IS_TEST=true
+
+mongo:
+  image: mongo
+  ports:
+    - "27017:27017"
