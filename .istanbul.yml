@@ -1,4 +1,4 @@
 instrumentation:
     root: .
     default-excludes: true
-    excludes: ['index.js', 'routes.js', '**/lib/**']
+    excludes: ['index.js', 'routes.js', '**/lib/**', '**/mongo-seed/**']

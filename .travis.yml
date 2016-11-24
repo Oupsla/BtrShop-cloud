@@ -1,14 +1,10 @@
 language: node_js
 sudo: required
-services:
-  - docker
 node_js:
   - "6"
   - "6.1"
   - "5.11"
   - "7"
 script:
-  - docker-compose -f docker-compose.test.yml -p ci up --build --abort-on-container-exit
-after_script:
-  - docker-compose kill
+  - npm test
 after_success: 'npm run coveralls'

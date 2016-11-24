@@ -2,13 +2,11 @@
 const supertest = require('supertest');
 const should = require('should');
 const mongoose = require('mongoose');
-
-// This agent refers to PORT where program is runninng.
-const server = supertest.agent('http://localhost:8080');
+const config = require('../config');
 
 /* For local test for coverage, start with : sudo docker-compose -f docker-compose.test.yml -p ci up */
-// const app = require("../index.js");
-// const server = supertest(app);
+const app = require("../index.js");
+const server = supertest.agent(app);
 
 // Sample produts
 const parsedJSON = require('../mongo-seed/product.json');
@@ -17,11 +15,8 @@ describe('Products', () => {
 
   // Clean up db
   beforeEach((done) => {
-    const connection = mongoose.createConnection(process.env.MONGO_DB_URI || 'mongodb://localhost/btrshop-cloud');
-    connection.dropDatabase(() => {
-      // console.log('db drop') ;
-      connection.collection('products').insertMany(parsedJSON, (err, r) => {
-        // console.log('db feeded');
+    mongoose.connection.dropDatabase(error => {
+      mongoose.connection.collection('products').insertMany(parsedJSON, (err, r) => {
         done();
       });
     });

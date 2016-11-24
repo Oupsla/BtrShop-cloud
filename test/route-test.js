@@ -3,8 +3,8 @@ const supertest = require('supertest');
 const should = require('should');
 
 // This agent refers to PORT where program is runninng.
-
-const server = supertest.agent('http://localhost:8080');
+const app = require("../index.js");
+const server = supertest.agent(app);
 
 describe('Routes test', () => {
   it('should return home page', (done) => {
