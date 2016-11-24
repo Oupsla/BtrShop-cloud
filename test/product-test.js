@@ -8,10 +8,6 @@ const config = require('../config');
 const app = require("../index.js");
 const server = supertest.agent(app);
 
-/* For local test for coverage, start with : sudo docker-compose -f docker-compose.test.yml -p ci up */
-// const app = require("../index.js");
-// const server = supertest(app);
-
 // Sample produts
 const parsedJSON = require('../mongo-seed/product.json');
 
